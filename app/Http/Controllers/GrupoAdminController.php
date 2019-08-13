@@ -41,8 +41,50 @@ class GrupoAdminController extends Controller {
 	
 	}
 
-	public function destroy(){
-	 			
+	public function asoc(Request $req, $idGrupo)
+	{
+		$idUsuario = $req->input('cboUsuarios'); 
+		DB::table('App_administrativo_grupo_usuario')->insert(
+            ['id_usuario' => $idUsuario,'id_grupo' => $idGrupo]);
+			$grupoAdmin = GrupoAdministrativo::findOrFail($idGrupo);
+			$usuarios = DB::table('usuarios')->get()->toArray();    
+			$usuariosAsociados = DB::table("vwGpoAdminUsuarios")
+		->where('grupo_id',$idGrupo)
+		->orderBy('usuario_id','desc')
+		->paginate(15);
+        
+        return view('catalogos.gruposAdmin.asociar',compact('grupoAdmin','usuarios','usuariosAsociados'));	
+
+	}
+
+	public function deasoc($id)
+	{
+        DB::table('App_administrativo_grupo_usuario')
+        ->where('id',$id)
+		->delete();
+		return redirect('gruposAdmin');	
+            
+    }
+
+    public function destroy($id)
+	{
+		DB::table('App_administrativo_grupo_usuario')->where
+        ('id',$id)->delete();
+			return redirect('gruposAdmin');
+    }
+
+
+	public function asociar($id)
+	{
+		$grupoAdmin = GrupoAdministrativo::findOrFail($id);
+		$usuarios = DB::table('usuarios')->get()->toArray();
+		$usuariosAsociados = DB::table("vwGpoAdminUsuarios")
+		->where('grupo_id',$id)
+		->orderBy('usuario_id','desc')
+		->paginate(15);
+        
+        return view('catalogos.gruposAdmin.asociar',compact('grupoAdmin','usuarios','usuariosAsociados'));	
+        
 	}
 
 }

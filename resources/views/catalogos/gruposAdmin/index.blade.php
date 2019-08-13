@@ -38,13 +38,15 @@
  			<th>Código</th>
  			<th>Nombre</th>
 			 <th>Descripción</th>
+			 <th>Asociar usuarios al grupo</th>
  			<th colspan="2">Acciones</th>
  		</tr>
  		<?php foreach ($grupoAdmin as $g):?>
  		<tr>
  			<td>{{$g->id}}</td>
  			<td>{{$g->grupo}}</td>
- 			<td>{{$g->descripcion}}</td>
+			 <td>{{$g->descripcion}}</td>
+			 <td><a class="btn btn-warning btn-xs" href="gruposAdmin/asociar/{{$g->id}}"><span class="glyphicon glyphicon-paperclip"></a></td>
  			<td><a class="btn btn-primary btn-xs" href="gruposAdmin/edit/{{$g->id}}"><span class="glyphicon glyphicon-pencil"></a></td>
  			<td><a class="btn btn-danger btn-xs" href="{{url('gruposAdmin/eliminar',$g->id)}}"><span class="glyphicon glyphicon-trash"></a></td>
  		</tr>

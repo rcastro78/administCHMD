@@ -13,6 +13,22 @@
 
 <p>
 
+
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">CHMD</a>
+		</div>	
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="{{ url('dashboard') }}">Menú Principal</a></li>
+			</ul>	
+		</div>	
+
+	</div>
+</nav>
+
+
 	<div class="container">
 
 

@@ -47,6 +47,7 @@ class GrupoEspecialController extends Controller {
         //Mostrar listado de alumnos asociados a este grupo
         $alumnosAsociados = DB::table("vwAlumnosGruposEspeciales")
 		->orderBy('alumno_id','desc')
+		->where('grupoEspecial',$id)
         ->paginate(15);
         
         return view('catalogos.gruposEspeciales.asociar',compact('grupoEspecial','alumnos','alumnosAsociados'));	

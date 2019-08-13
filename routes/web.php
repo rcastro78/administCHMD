@@ -53,6 +53,9 @@ Route::post('gruposAdmin/store','GrupoAdminController@store');
 Route::get('gruposAdmin/edit/{id}','GrupoAdminController@edit');
 Route::post('gruposAdmin/update/{id}','GrupoAdminController@update');
 Route::get('gruposAdmin/destroy/{id}','GrupoAdminController@destroy');
+Route::post('gruposAdmin/asoc/{id}','GrupoAdminController@asoc');
+Route::get('gruposAdmin/deasoc/{id}','GrupoAdminController@deasoc');
+Route::get('gruposAdmin/asociar/{id}','GrupoAdminController@asociar');
 
 //Catalogo de grupos especiales
 Route::get('gruposEspeciales','GrupoEspecialController@index');

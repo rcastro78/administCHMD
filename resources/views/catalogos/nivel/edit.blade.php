@@ -18,9 +18,9 @@
 		</div>	
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="/nivel">Todos</a></li>
+				<li><a href="{{ url('nivel') }}">Todos</a></li>
 				<li class="active"><a href="nivel/create">Nuevo</a></li>
-				<li><a href="dashboard">Menú Principal</a></li>
+				<li><a href="{{ url('dashboard') }}">Menú Principal</a></li>
 			</ul>	
 		</div>	
 

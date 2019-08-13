@@ -18,9 +18,9 @@
 		</div>	
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="{{ url('gruposEspeciales') }}">Todos</a></li>
-				<li class="active"><a href="gruposEspeciales/create">Nuevo</a></li>
-				<li><a href=".{{ url('dashboard') }}">Menú Principal</a></li>
+				<li><a href="/gruposAdmin">Todos</a></li>
+				<li class="active"><a href="gruposAdmin/create">Nuevo</a></li>
+				<li><a href="../../dashboard">Menú Principal</a></li>
 			</ul>	
 		</div>	
 
@@ -29,24 +29,24 @@
 
 <div class="panel panel-success">
 	<div class="panel-heading">
-        <h4>Asociar alumnos al grupo</h4>
-        <h5>Grupo a asociar: {{$grupoEspecial->grupo}} </h5>
+        <h4>Asociar usuarios al grupo</h4>
+        <h5>Grupo a asociar: {{$grupoAdmin->grupo}} </h5>
 	</div>
 
 	<div class="panel-body">
-        <form method="post" action="{{action('GrupoEspecialController@asoc',$grupoEspecial->id)}}">
+        <form method="post" action="{{action('GrupoAdminController@asoc',$grupoAdmin->id)}}">
         @csrf
 				<p>
-					<select name="cboAlumnos" id="cboAlumnos" class="form-control">
-                    @foreach($alumnos as $alumno)
-      						<option value="<?php echo $alumno->id; ?>"><?php echo $alumno->nombre; ?></option>
+					<select name="cboUsuarios" id="cboUsuarios" class="form-control">
+                    @foreach($usuarios as $usuario)
+      						<option value="<?php echo $usuario->id; ?>"><?php echo $usuario->nombre; ?></option>
     					@endforeach
                     </select>
 
                 </p>
 							
 				<p>
-					<input type="submit" class="btn btn-success " value="Asociar alumno al grupo">
+					<input type="submit" class="btn btn-success " value="Asociar usuario al grupo">
 				</p>	
 
 
@@ -56,30 +56,28 @@
 
         <div class="row">
  <div class="col-md-12">
- 	<h4 align="center">Alumnos asociados al grupo </h4>
+ 	<h4 align="center">Usuarios asociados al grupo </h4>
  	<table class="table table-bordered">
  		<tr>
          <th>Código</th>    
          <th>Código del grupo</th>
-             <th>Código del alumno</th>
+             <th>Código del usuario</th>
+ 			<th>Grupo</th>
  			<th>Nombre</th>
- 			<th>Código de familia</th>
- 			<th>Grado</th>
              <th>Eliminar</th>
  		</tr>
- 		<?php foreach ($alumnosAsociados as $a):?>
+ 		<?php foreach ($usuariosAsociados as $u):?>
  		<tr>
-         <td><?php echo $a->id; ?></td>
- 			<td><?php echo $a->grupoEspecial; ?></td>
- 			<td><?php echo $a->alumno_id; ?></td>
- 			<td><?php echo $a->nombre; ?></td>
- 			<td><?php echo $a->idfamilia; ?></td>
- 			<td><?php echo $a->grado; ?></td>
- 			<td><a class="btn btn-danger btn-xs" href="../deasoc/{{$a->id}}"><span class="glyphicon glyphicon-trash"></a></td>
+         <td><?php echo $u->id; ?></td>
+ 			<td><?php echo $u->grupo_id; ?></td>
+ 			<td><?php echo $u->usuario_id; ?></td>
+ 			<td><?php echo $u->grupo; ?></td>
+ 			<td><?php echo $u->nombre; ?></td>
+ 			<td><a class="btn btn-danger btn-xs" href="../deasoc/{{$u->id}}"><span class="glyphicon glyphicon-trash"></a></td>
  		</tr>
  		  <?php endforeach; ?>
  	</table>
- 	{{ $alumnosAsociados->links() }}
+ 	{{ $usuariosAsociados->links() }}
  </div>
 </div>
 
